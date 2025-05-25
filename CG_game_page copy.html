@@ -3,10 +3,24 @@
 <html lang="en">
 <head>
 <title>Global Trotter</title>
+<link rel="stylesheet" href="Style_Sheet_CG.css">
 </head>
 <body>
 
 <h1 style="font-size:60px">Global Trotter</h1>
+<p id="TypeCountryText">Enter County</p>
+<p id="Interact"></p>
+<input type="text" id="Country">
+<button onclick="guess()" id="InputButton">Guess</button>
+<p id="List"></p>
+
+<script>
+    function guess(){
+        var country = document.createElement("p");
+        country.innerHTML = document.getElementById("Country").value;
+        document.getElementById("List").appendChild(country);
+    }
+</script>
 
 </body>
 </html>
