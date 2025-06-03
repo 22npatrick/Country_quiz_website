@@ -15,7 +15,8 @@
 <p id="List"></p>
 
 <script>
-    const countryArray = [
+    function guess(){
+        const countryArray = [
         "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria",
         "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia",
         "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada",
@@ -30,16 +31,22 @@
         "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Korea",
         "North Macedonia", "Norway", "Oman", "Pakistan", "Palau", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru",
         "Philippines", "Poland", "Portugal", "Qatar", "Republic of the Congo", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis",
-        "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "São Tomé and Príncipe", "Saudi Arabia", "Senegal",
+        "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal",
         "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa",
         "South Korea", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan",
         "Tanzania", "Thailand", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine",
         "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela",
         "Vietnam", "Yemen", "Zambia", "Zimbabwe"];
-    function guess(){
-        var countryElement = document.createElement("p");
-        countryElement.innerHTML = document.getElementById("countryInput").value;
-        document.getElementById("List").appendChild(countryElement);
+        var userGuess = document.getElementById("countryInput").value
+        if (countryArray.includes(userGuess)) {
+            var countryElement = document.createElement("p");
+            countryElement.innerHTML = userGuess;
+            document.getElementById("List").appendChild(countryElement);
+        } else {
+            var countryElement = document.createElement("h1");
+            countryElement.innerHTML = "Did not type a valid county";
+            document.getElementById("List").appendChild(countryElement);
+        }
     }
 </script>
 
