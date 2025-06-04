@@ -9,7 +9,7 @@
 
 <h1 style="font-size:60px">Global Trotter</h1>
 <p id="TypeCountryText">Enter County</p>
-<p id="Interact"></p>
+<p id="percentage"></p>
 <input type="text" id="countryInput">
 <button onclick="guess()" id="InputButton">Guess</button>
 <p id="List"></p>
@@ -37,18 +37,17 @@
         "Tanzania", "Thailand", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine",
         "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela",
         "Vietnam", "Yemen", "Zambia", "Zimbabwe"];
-        var userGuess = document.getElementById("countryInput").value
+        var userGuess = document.getElementById("countryInput").value;
         if (countryArray.includes(userGuess)) {
             var countryElement = document.createElement("p");
             countryElement.innerHTML = userGuess;
             document.getElementById("List").appendChild(countryElement);
         } else {
-            var countryElement = document.createElement("h1");
+            var countryElement = document.createElement("p1");
             countryElement.innerHTML = "Did not type a valid county";
             document.getElementById("List").appendChild(countryElement);
         }
     }
 </script>
-
 </body>
 </html>
