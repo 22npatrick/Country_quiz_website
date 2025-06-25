@@ -27,7 +27,7 @@ const countryArray = [
 "Tanzania", "Thailand", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine",
 "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela",
 "Vietnam", "Yemen", "Zambia", "Zimbabwe"];
-
+const countriesGuessCorrectly = []
 
 /*
 const guessInput = document.getElementById("countryInput");
@@ -47,7 +47,9 @@ function guess(){
             var countryElement = document.createElement("p");
             userGuessIndex = countryArray.indexOf(userGuess);
             console.log(userGuessIndex)
+            countriesGuessCorrectly.unshift(countryArray[userGuessIndex]);
             countryArray.splice(userGuessIndex, 1);
+            console.log(countriesGuessCorrectly)
             console.log(countryArray)
             console.log(countryArray[userGuessIndex])
             countryElement.innerHTML = userGuess + num;
@@ -55,10 +57,13 @@ function guess(){
             num++;
             document.getElementById("percentage").innerHTML = num + "/" + String(numberOfCountries);
             document.getElementById("List").appendChild(countryElement);
+            message.innerHTML = "";
+        } else if (countriesGuessCorrectly.includes(userGuess)) {
+            var countryElement = document.createElement("p1");
+            message.innerHTML = "Already guesed country";
         } else {
             var countryElement = document.createElement("p1");
-            countryElement.innerHTML = "Did not type a valid county";
-            document.getElementById("List").appendChild(countryElement);
+            message.innerHTML = "Did not type a valid county";
         }
         if (num == numberOfCountries){
             document.getElementById("percentage").innerHTML += " Congrats you have guessed all the countries of the world!!!";
