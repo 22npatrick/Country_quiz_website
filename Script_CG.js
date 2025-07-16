@@ -83,13 +83,5 @@ function guess(){
     }
 }
 
-window.addEventListener("keyup", function (event) {
-    const key = event.key;
-    console.log(key + " In window")
-        if (event.key === 'Enter') {
-        console.log("Enter key pressed! 1");
-    }
-    }
-);
 
 
