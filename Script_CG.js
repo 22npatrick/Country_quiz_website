@@ -5,7 +5,7 @@ let num = 0;
 dissolution of countries.
 There are currently 197 counties in the country array
 */
-const numberOfCountries = 5
+const numberOfCountries = 10;
 const countryArray = [
 "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria",
 "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia",
@@ -28,13 +28,13 @@ const countryArray = [
 "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela",
 "Vietnam", "Yemen", "Zambia", "Zimbabwe"];
 const countriesGuessCorrectly = []
+var pop = "";
 
 /*
 const guessInput = document.getElementById("countryInput");
 const guessBtn =  document.getElementById("InputButton");
 */
-
-// Function to ...
+// Function to 
 function guess(){
     // Check if you have already guessed all the countries correctly
     if (num >= numberOfCountries){
@@ -56,8 +56,20 @@ function guess(){
             console.log(num)
             num++;
             document.getElementById("percentage").innerHTML = num + "/" + String(numberOfCountries);
-            document.getElementById("List").appendChild(countryElement);
+            //document.getElementById("List").appendChild(countryElement);
             message.innerHTML = "";
+            pop = userGuess
+            x = pop
+            console.log(pop)
+            console.log(x)
+            x = x.replace(/\s/g, "");
+            console.log(x)
+            x = "#" + x 
+            console.log(x)
+            document.querySelectorAll(x).forEach(e=>{
+                e.style.fill="black";
+                }
+            )
         } else if (countriesGuessCorrectly.includes(userGuess)) {
             var countryElement = document.createElement("p1");
             message.innerHTML = "Already guesed country";
