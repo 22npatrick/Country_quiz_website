@@ -4,22 +4,33 @@
 <head>
 <title>Global Trotter</title>
 <link rel="stylesheet" href="Style_Sheet_CG.css">
-<script src="Script_CG.js"></script>
+<script src="Script_CG.js">
+</script>
 </head>
 <body>
 
-<h1 style="font-size:60px">Global Trotter</h1>
-<p id="TypeCountryText">Enter County</p>
+<h1 style="font-size:60px"><a href="CG_home_page.html" id="gamePageTitle">Global Trotter</a></h1>
+<p id="TypeCountryText">Enter Country</p>
 <div  id="five">
 <p id="message">Placeholder</p>
 </div>
 <p id="percentage"></p>
 <input type="text" id="countryInput">
 <button onclick="guess()" id="InputButton">Guess</button>
-<p id="List"></p>
 <div>
     <p id="List"></p>
 </div>
+<script>
+    console.log("Check 1")
+    countryInput.addEventListener("keyup", function (event) {
+    const key = event.key;
+    console.log(key + " Inside Input box")
+        if (event.key === 'Enter') {
+            guess()
+    }
+    }
+);
+</script>
  <svg id="allSvg" baseprofile="tiny" fill="#ececec" stroke="black" stroke-linecap="round" stroke-linejoin="round"
     version="1.2" viewbox="0 0 2000 857" xmlns="http://www.w3.org/2000/svg">
     <path class="allPaths"
