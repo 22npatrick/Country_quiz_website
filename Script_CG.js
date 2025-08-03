@@ -27,6 +27,14 @@ const countryArray = [
 "Tanzania", "Thailand", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine",
 "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela",
 "Vietnam", "Yemen", "Zambia", "Zimbabwe"];
+const Evens = [2,4,6,8,10];
+
+/*
+for (let i in countryArray) {
+    countryArray[i] = countryArray[i].toLowerCase()
+    console.log(countryArray[i])
+}
+*/
 const countriesGuessCorrectly = []
 var pop = "";
 
@@ -42,6 +50,7 @@ function guess(){
     }
     else{
         var userGuess = document.getElementById("countryInput").value;
+        // userGuess = userGuess.toLowerCase()
         // Checks if the country is in the countryArray 
         if (countryArray.includes(userGuess)) {
             var countryElement = document.createElement("p");
@@ -55,6 +64,8 @@ function guess(){
             countryElement.innerHTML = userGuess + num;
             console.log(num)
             num++;
+            
+            countryInput.value = ""; //Clear the input field after a guess
             document.getElementById("percentage").innerHTML = num + "/" + String(numberOfCountries);
             //document.getElementById("List").appendChild(countryElement);
             message.innerHTML = "";

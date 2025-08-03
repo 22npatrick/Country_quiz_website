@@ -55,6 +55,12 @@ svg path {
     
 }
 
+#allSvg {
+  height: auto;
+  width: 52%;
+}
+
+
 /* rgba(89, 154, 80, 0.832) 
 
 Code with color pallet
