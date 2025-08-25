@@ -1,6 +1,7 @@
 
 // The num variable is used a counter to how many countries the user has guessed correctly.
 let num = 0;
+
 /* The numberOfCountries is a const can be changed later for the creation or 
 dissolution of countries.
 There are currently 197 counties in the country array
@@ -76,7 +77,6 @@ const SouthAmerica = ["argentina", "bolivia", "brazil", "chile", "colombia",
     "ecuador", "guyana", "paraguay", "peru", "suriname",
     "uruguay", "venezuela"];
 
-const Evens = [2,4,6,8,10];
 const countriesGuessCorrectly = []
 
 function giveupMessage(x){
@@ -87,29 +87,39 @@ function giveupMessage(x){
 }
 
 function giveup(){
-    console.log("giveup")
-    console.log(countriesGuessCorrectly)
+    var continentCheck = true
     let fullmessage = ""    
+    // Checks what message should be displayed on the giveup screen 
     let checker = (arr, target) => target.every(v => arr.includes(v));  
     if (checker(countriesGuessCorrectly, Oceania)){
-        fullmessage = " You guess all the countries in Oceania. "
+        fullmessage = " You guess all the countries in Oceania!!! "
+        continentCheck = false
         giveupMessage(fullmessage)
     } if (checker(countriesGuessCorrectly, Europe)){
-        fullmessage = " You guess all the countries in Europe. "
+        fullmessage = " You guess all the countries in Europe!!!"
+        continentCheck = false
         giveupMessage(fullmessage)
     }  if (checker(countriesGuessCorrectly, Asia)){
-        fullmessage = " You guess all the countries in Asia. "
+        fullmessage = " You guess all the countries in Asia!!!"
+        continentCheck = false
         giveupMessage(fullmessage)
     }  if (checker(countriesGuessCorrectly, Africa)){
-        fullmessage = " You guess all the countries in Africa. "
+        fullmessage = " You guess all the countries in Africa!!!"
+        continentCheck = false
         giveupMessage(fullmessage)
     }  if (checker(countriesGuessCorrectly, NorthAmerica)){
-        fullmessage = " You guess all the countries in North America. "
+        fullmessage = " You guess all the countries in North America!!!"
+        continentCheck = false
         giveupMessage(fullmessage)
     }  if (checker(countriesGuessCorrectly, SouthAmerica)){
-        fullmessage = " You guess all the countries in South America. "
+        fullmessage = " You guess all the countries in South America!!!"
+        continentCheck = false
+        giveupMessage(fullmessage)
+    } if (continentCheck){
+        fullmessage = " Keep on praticing and learning so that you can know an enitre continent's worth of countries "
         giveupMessage(fullmessage)
     }
+    //Sets up the give up page by making a retry button and removing elements from the screen
     var retryButton = document.createElement("button")
     retryButton.innerHTML = "Retry";
     document.getElementById("percentage").append(retryButton)
@@ -148,53 +158,42 @@ function guess(){
         if (countryArray.includes(userGuess)) {
             var countryElement = document.createElement("p");
             userGuessIndex = countryArray.indexOf(userGuess);
-            console.log(userGuessIndex)
             countriesGuessCorrectly.unshift(countryArray[userGuessIndex]);
             countryArray.splice(userGuessIndex, 1);
-            console.log(countriesGuessCorrectly)
-            console.log(countryArray)
-            console.log(countryArray[userGuessIndex])
             countryElement.innerHTML = userGuess + num;
-            console.log(num)
             num++;
             countryInput.value = ""; //Clear the input field after a guess
             document.getElementById("percentage").innerHTML = num + "/" + String(numberOfCountries);
-            //document.getElementById("List").appendChild(countryElement);
             message.innerHTML = "";
+            //highlights guessed country on the map based on the continent its in
             tagUserGuess = "#" + userGuess  
             if (Oceania.includes(userGuess)) {
                 document.querySelectorAll(tagUserGuess).forEach(e=>{
                 e.style.fill= "purple";
-                e.style.border="white";
             })} if (Europe.includes(userGuess)) {
                 document.querySelectorAll(tagUserGuess).forEach(e=>{
                 e.style.fill= "red";
-                e.style.border="white";
             })} if (Asia.includes(userGuess)) {
                 document.querySelectorAll(tagUserGuess).forEach(e=>{
                 e.style.fill= "orange";
-                e.style.border="white";
             })} if (Africa.includes(userGuess)) {
                 document.querySelectorAll(tagUserGuess).forEach(e=>{
                 e.style.fill= "yellow";
-                e.style.border="white";
             })} if (NorthAmerica.includes(userGuess)) {
                 document.querySelectorAll(tagUserGuess).forEach(e=>{
                 e.style.fill= "lightgreen";
-                e.style.border="white";
             })} if (SouthAmerica.includes(userGuess)) {
                 document.querySelectorAll(tagUserGuess).forEach(e=>{
                 e.style.fill= "darkgreen";
-                e.style.border="white";
             })}
-        } else if (countriesGuessCorrectly.includes(userGuess)) {
+        } else if (countriesGuessCorrectly.includes(userGuess)) { // Checks if already guesed country
             var countryElement = document.createElement("p1");
             message.innerHTML = "Already guesed country";
         } else {
-            var countryElement = document.createElement("p1");
+            var countryElement = document.createElement("p1");// Checks if typed an invalid answer
             message.innerHTML = "Did not type a valid county";
         }
-        if (num == numberOfCountries){
+        if (num == numberOfCountries){ // Checks if you guessed all countries
             document.getElementById("percentage").innerHTML += " Congrats you have guessed all the countries of the world!!!";
         }
     }
