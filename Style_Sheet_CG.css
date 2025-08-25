@@ -1,15 +1,17 @@
 body {
   text-align: center;
+
+
 }
+
 h1 {
     color: black;
 }
 
 #gamePageTitle  {
-  color: black;
+  color: rgb(0, 0, 0);
   text-decoration: none;
 }
-
 
 p {
   color: black;
@@ -46,7 +48,7 @@ p {
 body {
     overflow-x: hidden;
     overflow-y: hidden;
-    background-color: rgb(53 118 156)
+
 }
 
 svg path {

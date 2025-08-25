@@ -27,43 +27,96 @@ const countryArray = [
 "tanzania", "thailand", "togo", "tonga", "trinidadandtobago", "tunisia", "turkey", "turkmenistan", "tuvalu", "uganda", "ukraine",
 "unitedarabemirates", "unitedkingdom", "unitedstates", "uruguay", "uzbekistan", "vanuatu", "vaticancity", "venezuela",
 "vietnam", "yemen", "zambia", "zimbabwe"];
+
+
+const Oceania = ["australia", "federatedstatesofmicronesia", "fiji", "kiribati", "marshallislands",
+    "nauru","newzealand","palau","papuanewguinea","samoa",
+    "solomonislands","tonga","tuvalu","vanuatu"];
+
+const Europe = ["albania","andorra","austria","belarus","belgium",
+    "bosniaandherzegovina","bulgaria","croatia","czechrepublic","denmark",
+    "estonia","finland","france","germany","greece",
+    "hungary","iceland","ireland","italy","kosovo",
+    "latvia","liechtenstein","lithuania","luxembourg","malta",
+    "moldova","monaco","montenegro","netherlands","northmacedonia",
+    "norway","poland","portugal","romania","russia",
+    "sanmarino","serbia","slovakia","slovenia","spain",
+    "sweden","switzerland","ukraine","unitedkingdom","vaticancity"];
+
+const Asia = ["afghanistan", "armenia", "azerbaijan", "bahrain", "bangladesh",
+    "bhutan", "brunei", "cambodia", "china", "cyprus",
+    "timor-leste", "georgia", "india", "indonesia", "iran",
+    "iraq", "israel", "japan", "jordan", "kazakhstan",
+    "kuwait", "kyrgyzstan", "laos", "lebanon", "malaysia",
+    "maldives", "mongolia", "myanmar", "nepal", "northkorea",
+    "oman", "pakistan", "palestine", "philippines", "qatar",
+    "saudiarabia", "singapore", "southkorea", "srilanka", "syria",
+    "taiwan", "tajikistan", "thailand", "turkey", "turkmenistan",
+    "unitedarabemirates", "uzbekistan", "vietnam", "yemen"];
+
+const Africa = ["algeria", "angola", "benin", "botswana", "burkinafaso",
+    "burundi", "cameroon", "capeverde", "centralafricanrepublic", "chad",
+    "comoros", "democraticrepublicofthecongo", "djibouti", "egypt", "equatorialguinea",
+    "eritrea", "eswatini", "ethiopia", "gabon", "gambia",
+    "ghana", "guinea", "guinea-bissau", "ivorycoast", "kenya",
+    "lesotho", "liberia", "libya", "madagascar", "malawi",
+    "mali", "mauritania", "mauritius", "morocco", "mozambique",
+    "namibia", "niger", "nigeria", "republicofthecongo", "rwanda",
+    "saotomeandprincipe", "senegal", "seychelles", "sierraleone", "somalia",
+    "southafrica", "southsudan", "sudan", "tanzania", "togo",
+    "tunisia", "uganda", "zambia", "zimbabwe",];
+
+const NorthAmerica = ["antiguaandbarbuda", "bahamas", "barbados", "belize", "canada",
+    "costarica", "cuba", "dominica", "dominicanrepublic", "elsalvador",
+    "grenada", "guatemala", "haiti", "honduras", "jamaica",
+    "mexico", "nicaragua", "panama", "saintkittsandnevis", "saintlucia",
+    "saintvincentandthegrenadines", "trinidadandtobago", "unitedstates"];
+
+const SouthAmerica = ["argentina", "bolivia", "brazil", "chile", "colombia",
+    "ecuador", "guyana", "paraguay", "peru", "suriname",
+    "uruguay", "venezuela"];
+
 const Evens = [2,4,6,8,10];
 const countriesGuessCorrectly = []
 
-/*
-const guessInput = document.getElementById("countryInput");
-const guessBtn =  document.getElementById("InputButton");
-*/
-
-function myFunction(value) {
-    return value;
+function giveupMessage(x){
+    var countryElement = document.createElement("h1");
+    countryElement.innerHTML = x;
+    document.getElementById("List").appendChild(countryElement);
+    return;
 }
 
 function giveup(){
     console.log("giveup")
-    message.innerHTML = "";
     console.log(countriesGuessCorrectly)
-    const Oceania = ["samoa", "australia"];
-    const Europe = ["latvia", "denmark"];
-    const Asia = ["china", "india"];
-    const Africa = ["south africa", "egypt"];
-    const NorthAmerica = ["united states", "canada"];
-    const SouthameriaAmerica = ["brazil", "argentina"];
     let fullmessage = ""    
-    let checker = (arr, target) => target.every(v => arr.includes(v));  //Credit to https://stackoverflow.com/questions/53606337/check-if-array-contains-all-elements-of-another-array
+    let checker = (arr, target) => target.every(v => arr.includes(v));  
     if (checker(countriesGuessCorrectly, Oceania)){
-        fullmessage += " You guess all the countries in Oceania. "
+        fullmessage = " You guess all the countries in Oceania. "
+        giveupMessage(fullmessage)
     } if (checker(countriesGuessCorrectly, Europe)){
-        fullmessage += " You guess all the countries in Europe, "
+        fullmessage = " You guess all the countries in Europe. "
+        giveupMessage(fullmessage)
     }  if (checker(countriesGuessCorrectly, Asia)){
-        fullmessage += " You guess all the countries in Asia, "
+        fullmessage = " You guess all the countries in Asia. "
+        giveupMessage(fullmessage)
     }  if (checker(countriesGuessCorrectly, Africa)){
-        fullmessage += " You guess all the countries in Africa, "
+        fullmessage = " You guess all the countries in Africa. "
+        giveupMessage(fullmessage)
     }  if (checker(countriesGuessCorrectly, NorthAmerica)){
-        fullmessage += " You guess all the countries in North America, "
-    }  if (checker(countriesGuessCorrectly, SouthameriaAmerica)){
-        fullmessage += " You guess all the countries in South America, "
+        fullmessage = " You guess all the countries in North America. "
+        giveupMessage(fullmessage)
+    }  if (checker(countriesGuessCorrectly, SouthAmerica)){
+        fullmessage = " You guess all the countries in South America. "
+        giveupMessage(fullmessage)
     }
+    var retryButton = document.createElement("button")
+    retryButton.innerHTML = "Retry";
+    document.getElementById("percentage").append(retryButton)
+    document.getElementsByTagName("button")[0].id = "retryButton"
+    document.getElementById("retryButton").style.fontSize = "x-large";
+    document.getElementById("retryButton").style.margin = "30px 10px 20px 30px";
+    message.innerHTML = "";
     var dave = document.getElementById("allSvg")
     dave.remove();
     dave = document.getElementById("countryInput")
@@ -72,18 +125,12 @@ function giveup(){
     dave.remove();
     dave = document.getElementById("giveUpButton")
     dave.remove();
-    var countryElement = document.createElement("p");
-    countryElement.innerHTML = fullmessage;
-    document.getElementById("List").appendChild(countryElement);
+    dave = document.getElementById("TypeCountryText")
+    dave.remove();
+    document.getElementById("retryButton").addEventListener("click", function (event){
+        location.reload()
+    })
 
-/*
-    if (num <= (numberOfCountries*0.05)){
-        message.innerHTML = "... You need to learn your countries";
-    } else if (num <= (numberOfCountries*0.10)){
-        message.innerHTML = "You know over 10% of the countries in the world! Keep own learning your countries ";
-    }
-*/  
-    return;
 }
 
 
@@ -114,12 +161,32 @@ function guess(){
             document.getElementById("percentage").innerHTML = num + "/" + String(numberOfCountries);
             //document.getElementById("List").appendChild(countryElement);
             message.innerHTML = "";
-            userGuess = "#" + userGuess         
-            document.querySelectorAll(userGuess).forEach(e=>{
-                e.style.fill="black";
+            tagUserGuess = "#" + userGuess  
+            if (Oceania.includes(userGuess)) {
+                document.querySelectorAll(tagUserGuess).forEach(e=>{
+                e.style.fill= "purple";
                 e.style.border="white";
-                }
-            )
+            })} if (Europe.includes(userGuess)) {
+                document.querySelectorAll(tagUserGuess).forEach(e=>{
+                e.style.fill= "red";
+                e.style.border="white";
+            })} if (Asia.includes(userGuess)) {
+                document.querySelectorAll(tagUserGuess).forEach(e=>{
+                e.style.fill= "orange";
+                e.style.border="white";
+            })} if (Africa.includes(userGuess)) {
+                document.querySelectorAll(tagUserGuess).forEach(e=>{
+                e.style.fill= "yellow";
+                e.style.border="white";
+            })} if (NorthAmerica.includes(userGuess)) {
+                document.querySelectorAll(tagUserGuess).forEach(e=>{
+                e.style.fill= "lightgreen";
+                e.style.border="white";
+            })} if (SouthAmerica.includes(userGuess)) {
+                document.querySelectorAll(tagUserGuess).forEach(e=>{
+                e.style.fill= "darkgreen";
+                e.style.border="white";
+            })}
         } else if (countriesGuessCorrectly.includes(userGuess)) {
             var countryElement = document.createElement("p1");
             message.innerHTML = "Already guesed country";
